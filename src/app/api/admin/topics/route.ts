@@ -30,7 +30,9 @@ export async function POST(request: NextRequest) {
         theory: sanitizeText(input.theory, 12000),
         notes: sanitizeText(input.notes, 12000),
         visualGuide: sanitizeText(input.visualGuide, 12000),
-        commonMistakes: input.commonMistakes.map((item) => sanitizeText(item, 300)),
+        commonMistakes: (input.commonMistakes ?? []).map((item) =>
+  sanitizeText(item, 300)
+),
         prerequisites: input.prerequisites,
         nextTopics: input.nextTopics
       }
