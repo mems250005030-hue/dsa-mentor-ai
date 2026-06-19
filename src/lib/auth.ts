@@ -62,12 +62,14 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, user }) {
       if (session.user) {
-        session.user.id = user.id;
-        session.user.role = user.role;
-        session.user.xp = user.xp;
-        session.user.level = levelFromXp(user.xp);
-        session.user.bannedAt = user.bannedAt?.toISOString() ?? null;
-      }
+  session.user.id = user.id;
+
+  (session.user as any).role = (user as any).role;
+  (session.user as any).xp = (user as any).xp;
+  (session.user as any).level = levelFromXp((user as any).xp);
+  (session.user as any).bannedAt =
+    (user as any).bannedAt?.toISOString() ?? null;
+}
       return session;
     }
   },
