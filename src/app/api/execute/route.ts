@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         : "python";
 
     const response = await fetch(
-      "https://pleasant-product-catalyst-repeat.trycloudflare.com/execute",
+      "https://budget-compressed-vpn-circle.trycloudflare.com/execute",
       {
         method: "POST",
         headers: {
